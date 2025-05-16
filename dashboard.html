@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard | To-Do App</title>
+    <style>
+        /* General Layout */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .app {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        h1 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .logout-btn {
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .logout-btn:hover {
+            background-color: #c9302c;
+        }
+
+        /* Form Styling */
+        #task-form input, #task-form select, #task-form textarea, #task-form button {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #task-form button {
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #task-form button:hover {
+            background-color: #357ae8;
+        }
+
+        /* Filter Styling */
+        .filter {
+            margin-bottom: 20px;
+        }
+        .filter label {
+            margin-right: 10px;
+        }
+        .filter select {
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        /* Task List Styling */
+        #task-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        #task-list li {
+            background-color: #f9f9f9;
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 8px;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        #task-list li button {
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #task-list li button:hover {
+            background-color: #c9302c;
+        }
+        .task-details {
+            flex-grow: 1;
+        }
+        .task-category {
+            font-size: 12px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <h1>To-Do List 
+            <button onclick="logout()" class="logout-btn">Logout</button>
+        </h1>
+
+        <form id="task-form">
+            <input type="text" id="title" placeholder="Task Title" required>
+            <select id="category" required>
+                <option value="" disabled selected>Select Category</option>
+                <option value="Work">Work</option>
+                <option value="Personal">Personal</option>
+                <option value="Shopping">Shopping</option>
+            </select>
+            <textarea id="description" placeholder="Description"></textarea>
+            <button type="submit">Add Task</button>
+        </form>
+
+        <div class="filter">
+            <label>Filter by Category:</label>
+            <select id="filter-category">
+                <option value="">All</option>
+                <option value="Work">Work</option>
+                <option value="Personal">Personal</option>
+                <option value="Shopping">Shopping</option>
+            </select>
+        </div>
+
+        <ul id="task-list">
+            <!-- Example Task -->
+            <li>
+                <div class="task-details">
+                    <strong>Example Task</strong>
+                    <p class="task-category">Work</p>
+                </div>
+                <button onclick="removeTask(this)">Delete</button>
+            </li>
+        </ul>
+    </div>
+
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
